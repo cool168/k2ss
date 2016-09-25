@@ -5,16 +5,15 @@ RUN apt-get update && \
 	
 # Deploys files
 RUN mkdir -p /app
-RUN mkdir -p /app/kcp
+
 RUN chmod +x /app
 
-COPY ./*_amd64 /app/kcp
-
-RUN chmod +x /app/kcp/*
+COPY ./*_amd64 /app/
 
 COPY ./packages/*.deb /app/
 COPY ./*.sh /app/
 RUN chmod +x /app/*.sh
+RUN chmod +x /app/*
 
 RUN	dpkg -i /app/*.deb
 
