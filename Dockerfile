@@ -16,9 +16,8 @@ COPY ./packages/*.deb /app/
 COPY ./*.sh /app/
 RUN chmod +x /app/*.sh
 
-RUN	dpkg -i /app/shadowsocks-libev_*.deb
+RUN	dpkg -i /app/*.deb
 RUN	rm /etc/init.d/shadowsocks-libev
 RUN     rm -rf /app/*.deb
-RUN apt-get clean
 
 WORKDIR /app
