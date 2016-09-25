@@ -7,17 +7,17 @@ RUN apt-get update && \
 RUN mkdir -p /app
 RUN mkdir -p /app/kcp
 RUN chmod +x /app
-COPY ./client_linux_amd64 /app/kcp
-COPY ./server_linux_amd64 /app/kcp
-RUN chmod +x /app/kcp/client_linux_amd64
-RUN chmod +x /app/kcp/server_linux_amd64
+
+COPY ./*_amd64 /app/kcp
+
+RUN chmod +x /app/kcp/*
 
 COPY ./packages/*.deb /app/
 COPY ./*.sh /app/
 RUN chmod +x /app/*.sh
 
 RUN	dpkg -i /app/*.deb
-RUN	rm /etc/init.d/shadowsocks-libev
+
 RUN     rm -rf /app/*.deb
 
 WORKDIR /app
