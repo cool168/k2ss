@@ -18,5 +18,6 @@ RUN chmod +x /app/*
 RUN	dpkg -i /app/*.deb
 
 RUN     rm -rf /app/*.deb
-
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
 WORKDIR /app
