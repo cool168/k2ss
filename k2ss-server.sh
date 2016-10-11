@@ -6,7 +6,7 @@ if [ ! -f "$INSTALL_FLAG" ]; then
 	touch $INSTALL_FLAG
 fi
 
-if [ $ENABLE_HTTP = "no" ]
+if [ $ENABLE_S2K = "no" ]
 then
      ss-server -s 0.0.0.0 -p 9090 -m chacha20 -k ss$PWD1 -t 60 -u -A >/dev/null 2>&1
 else
